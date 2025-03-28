@@ -14,12 +14,13 @@ function HousePricePredictor() {
     const [furnishing, setFurnishing] = useState('Unfurnished');
     const [smoking, setSmoking] = useState("No");
     const [pets, setPets] = useState(false);
+    const [price, setPrice] = useState(-1);
 
     // Function to handle form submission
     async function handleSubmit(event) {
         event.preventDefault();
 
-        const backendEndpoint = 'http://127.0.0.1:5000/predict_house_price';
+        const backendEndpoint = 'http://localhost:5000/predict_house_price';
 
         try {
             const response = await fetch(backendEndpoint, {
@@ -46,8 +47,7 @@ function HousePricePredictor() {
             const data = await response.json();
 
             if (response.ok) {
-                console.log(data["predicted_price"]);
-                console.log('Form submitted successfully!');
+                setPrice(data["predicted_price"])
             } else {
                 console.error('Form submission failed.');
             }
@@ -165,9 +165,14 @@ function HousePricePredictor() {
         <br />
         <button type="submit">Predict</button>
         </form>
-        <div id="prediction-result">
-            RESULT
-        </div>
+        {
+            price === -1 ? null :
+            
+            <div id="prediction-result">
+                Predicted Rent Price: ${price}
+            </div>
+            
+        }
     </div>
     );
 };
