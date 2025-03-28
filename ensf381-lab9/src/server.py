@@ -6,6 +6,32 @@ import pandas as pd
 app = Flask(__name__)
 CORS(app)
 
+user_credentials = {
+    "alice": "password123",
+    "bob": "secure456",
+    "charlie": "qwerty789",
+    "diana": "hunter2",
+    "eve": "passpass",
+    "frank": "letmein",
+    "grace": "trustno1",
+    "heidi": "admin123",
+    "ivan": "welcome1",
+    "judy": "password1"
+}
+
+@app.route('/validate_login', methods=['POST'])
+def validate_login():
+    data = request.get_json()
+
+    username = data.get('username')
+    password = data.get('password')
+
+    if username in user_credentials and user_credentials[username] == password:
+        return jsonify({"success": True, "message": "Login successful!"})
+    else:
+        return jsonify({"success": False, "message": "Invalid username or password."})
+
+
 # Assigning multiple routes to the same function
 @app.route('/predict_house_price',methods=['POST'])
 def predict_house_price():
