@@ -1,0 +1,52 @@
+#price-predictor {
+    max-width: 600px;
+    padding: 24px;
+    margin: auto;
+    margin-top: 40px;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#price-predictor form {
+    display: flex;
+    flex-direction: column;
+}
+
+#price-predictor form label {
+    margin-top: 12px;
+}
+
+#price-predictor form input {
+    padding: 8px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+
+#price-predictor form select {
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+
+#price-predictor form button {
+    margin-top: 12px;
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 4px;
+    border: none;
+}
+
+#price-predictor form button:hover {
+    cursor: pointer;
+    background-color: #0050FF;
+}
+
+#prediction-result {
+    margin-top: 16px;
+    background-color: #DFF0D8;
+    border: 1px solid #3C763D;
+    padding: 12px;
+    border-radius: 4px;
+    font-weight: bold;
+}
